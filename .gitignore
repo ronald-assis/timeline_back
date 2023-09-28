@@ -20,4 +20,5 @@ experimental/**/*.db
 .next
 .vscode/
 dev.db
+dev.db-journal
 *.env*

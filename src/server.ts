@@ -22,8 +22,12 @@ app.register(cors, {
   origin: true,
 })
 
+// console.log(process.env.SECRET_JWT_ENV || '')
+// resolver error
 app.register(jwt, {
-  secret: 'spacetime',
+  secret: {
+    public: process.env.SECRET_JWT_ENV,
+  },
 })
 
 app.register(authRoutes)

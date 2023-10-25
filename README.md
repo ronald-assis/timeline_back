@@ -8,7 +8,7 @@ A memory app where users can add texts, photos and videos of important events in
 <br/>
 
 
-This is a [Fastfy](https://fastify.dev/docs/latest/Guides/Getting-Started/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Fastfy](https://fastify.dev/docs/latest/Guides/Getting-Started/) project bootstrapped with `create-next-app`.
 
 <h2>Getting Started</h2>
 
@@ -24,9 +24,7 @@ yarn
 ```
 <br/>
 
-<p>Rode o comando no terminal dentro do diretorio do projeto: [`<b>export (cat .env | xargs)`] </b>.
-Para não precisar instalar o dotenv</p>
-
+> Rum the command: **`export (cat .env | xargs)`** in the terminal inside the project root. So you don't need to install `dotenv`
 1. **env file**
     - create a file in the root of the project wich name: **.env**
     - Keys:

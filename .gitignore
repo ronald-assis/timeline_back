@@ -1,3 +1,24 @@
-node_modules
 # Keep environment variables out of version control
 .env
+.idea
+uploads
+*Db.*
+node_modules/
+yarn-error.log/
+vendor/
+tmp/
+dist/
+.DS_Store
+tmp-resolvers
+flow-typed
+yarn.lock
+javascript/**/migrations/
+typescript/**/migrations/
+misc/**/migrations/
+prisma/migrations/
+experimental/**/*.db
+.next
+.vscode/
+dev.db
+dev.db-journal
+*.env*

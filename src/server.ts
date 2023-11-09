@@ -1,19 +1,40 @@
+import { resolve } from 'node:path'
 import fastify from 'fastify'
-import { PrismaClient } from '@prisma/client'
+import cors from '@fastify/cors'
+import jwt from '@fastify/jwt'
+import multipart from '@fastify/multipart'
+import fastifyStatic from '@fastify/static'
+
+import { memoriesRoutes } from './routes/memories'
+import { authRoutes } from './routes/auth'
+import { uploadRoutes } from './routes/upload'
 
 const app = fastify()
-const prisma = new PrismaClient()
+const PORT = Number(process.env.PORT_ENV)
 
-const PORT = 3333
-
-app.get('/users', async () => {
-    const users = await prisma.user.findMany()
-  return users
+app.register(multipart)
+app.register(fastifyStatic, {
+  root: resolve(__dirname, '../uploads'),
+  prefix: '/uploads',
 })
+
+app.register(cors, {
+  origin: true,
+})
+
+// resolver error
+app.register(jwt, {
+  secret: process.env.SECRET_JWT_ENV || '',
+})
+
+app.register(authRoutes)
+app.register(uploadRoutes)
+app.register(memoriesRoutes)
 
 app
   .listen({
     port: PORT,
+    host: '0.0.0.0',
   })
   .then(() => {
     console.log(`HTTP server running on http://localhost:${PORT}`)

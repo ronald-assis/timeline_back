@@ -10,7 +10,7 @@ import { authRoutes } from './routes/auth'
 import { uploadRoutes } from './routes/upload'
 
 const app = fastify()
-const PORT = 3333
+const PORT = Number(process.env.PORT_ENV)
 
 app.register(multipart)
 app.register(fastifyStatic, {
@@ -22,8 +22,9 @@ app.register(cors, {
   origin: true,
 })
 
+// resolver error
 app.register(jwt, {
-  secret: 'spacetime',
+  secret: process.env.SECRET_JWT_ENV || '',
 })
 
 app.register(authRoutes)
